@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Location Example</title>
+    <script>
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      }
+
+      function showPosition(position) {
+        var currentDate = new Date();
+        console.log("Date: " + currentDate.toLocaleDateString());
+        console.log("Time: " + currentDate.toLocaleTimeString());
+        console.log("Latitude: " + position.coords.latitude);
+        console.log("Longitude: " + position.coords.longitude);
+        var studentID = document.getElementById("student-id").value;
+        console.log("Student ID: " + studentID);
+        // You can use this data to store in a google sheet or a database
+        // and associate it with the student ID
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="student-id">Student ID:</label>
+      <input type="text" id="student-id" name="student-id">
+    </form>
+    <button onclick="getLocation()">Get Location</button>
+  </body>
+</html>
